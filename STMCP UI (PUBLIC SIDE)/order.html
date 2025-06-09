@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merchandise Form | STMCP</title>
+    <link rel="icon" type="image/x-icon" href="FAV.webp">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <style>
+    body {
+        background-image: url('watermark.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 600px;
+        background-attachment: fixed;
+    }
+
+    .container {
+        margin-top: 50px;
+        max-width: 800px;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        margin-bottom: 15px;
+        text-transform: uppercase; /* This will automatically capitalize letters */
+    }
+
+    .agreement {
+        font-size: 0.9rem;
+    }
+
+    .agreement input {
+        margin-left: 10px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 10px;
+        font-size: 1.2rem;
+    }
+
+    .preview-section {
+        margin-top: 30px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+    }
+
+    /* Add pop-up modal style */
+    .modal-backdrop {
+        z-index: 1050 !important;
+    }
+    .modal-content {
+        border-radius: 10px;
+    }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h2 class="text-center mb-4">Star Touring Motorcycle Club Philippines</h2>
+        <h2 class="text-center font-weight-bold mb-4">
+            <i class="bi bi-file-earmark-person me-2 fs-2"></i>Merchandise Pre-order form.
+        </h2>
+
+        <form id="merchandise-form" action="submit_form.php" method="POST">
+
+            <!-- Order Info -->
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="last_name" class="form-label">Full Name: <span class="text-danger">*</span></label>
+                    <input type="text" id="last_name" name="last_name" class="form-control" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="middle_initial" class="form-label">Membership ID ('the membership ID issued to you upon your application'):</label>
+                    <input type="text" id="middle_initial" name="middle_initial" class="form-control">
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="team_chapter" class="form-label">Team/Chapter:</label>
+                        <select class="form-select" id="team_chapter" name="team_chapter" class="form-control" required>
+                            <option value="option">PLEASE SELECT CHAPTER</option>
+                            <option value="Cavite">TEAM CAVITE</option>
+                            <option value="Ilocos">TEAM ILOCOS</option>
+                            <option value="Taguig/Makati">TEAM TAGMAK</option>
+                            <option value="Mandaluyong/San Juan">TEAM MANDASAN</option>
+                            <option value="Malabon">TEAM MALABON</option>
+                            <option value="Manila">TEAM MANILA</option>
+                            <option value="Marikina">TEAM MARIKINA</option>
+                            <option value="Metro South">TEAM METRO SOUTH</option>
+                            <option value="Pasay">TEAM PASAY</option>
+                            <option value="Pasig">TEAM PASIG</option>
+                            <option value="Montalban">TEAM MONTALBAN</option>
+                            <option value="North Caloocan">TEAM NORTH CALOOCAN</option>
+                            <option value="Pampanga">TEAM PAMPANGA</option>
+                            <option value="Quezon City">TEAM QUEZON CITY</option>
+                            <option value="Rizal">TEAM RIZAL</option>
+                            <option value="San Mateo">TEAM SAN MATEO</option>
+                            <option value="San Jose Del Monte Bulacan">TEAM SJDM BULACAN</option>
+                            <option value="Sta. Maria Bulacan">TEAM STA. MARIA BULACAN</option>
+                            <option value="Valenzuela">TEAM VALENZUELA</option>
+                            <option value="Laguna">TEAM LAGUNA</option>
+                            <option value="Pangasinan">TEAM PANGASINAN</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Personal email Address: <span class="text-danger">*</span></label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="civil_status" class="form-label">What Merch?: <span class="text-danger">*</span></label>
+                    <select class="form-select" id="civil_status" name="civil_status" required>
+                        <option value="Option">PLEASE SELECT WHAT TO BUY</option>
+                        <option value="T-shirt">T-SHIRT</option>
+                        <option value="Sticker">STICKER</option>
+                        <option value="Vest">VEST</option>
+                    </select>
+                </div>
+
+                <!-- kung vest lalabas dapat ito -->
+
+                <div class="col-md-6">
+                    <label for="first_name" class="form-label">Nickname (if Vest): <span class="text-danger">*</span></label>
+                    <input type="text" id="first_name" name="first_name" class="form-control" required>
+                </div>
+
+
+                <div class="col-md-6">
+                    <label for="civil_status" class="form-label">Size: <span class="text-danger">*</span></label>
+                    <select class="form-select" id="civil_status" name="civil_status" required>
+                        <option value="Option">PLEASE SELECT YOUR SIZE</option>
+                        <option value="Extra Small">XL</option>
+                        <option value="Small">S</option>
+                        <option value="Medium">M</option>
+                        <option value="Large">L</option>
+                        <option value="Extra Large">XL</option>
+                    </select>
+                </div>
+
+            <br><br>
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-warning">Submit Application</button>
+
+        </form>
+
+        <!-- Preview Section (hidden initially) -->
+        <div class="modal" id="previewModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Preview Your Membership Application</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Last Name:</strong> <span id="preview-last-name"></span></p>
+                        <p><strong>First Name:</strong> <span id="preview-first-name"></span></p>
+                        <p><strong>Email Address:</strong> <span id="preview-email"></span></p>
+                        <p><strong>Middle Initial:</strong> <span id="preview-middle-initial"></span></p>
+                        <p><strong>Address:</strong> <span id="preview-address"></span></p>
+                        <p><strong>Civil Status:</strong> <span id="preview-civil-status"></span></p>
+                        <p><strong>Date of Birth:</strong> <span id="preview-dob"></span></p>
+                        <p><strong>Phone Number:</strong> <span id="preview-phone"></span></p>
+                        <p><strong>Blood Type:</strong> <span id="preview-blood-type"></span></p>
+                        <p><strong>Emergency Contact:</strong> <span id="preview-emergency-contact"></span></p>
+                        <p><strong>Occupation:</strong> <span id="preview-occupation"></span></p>
+                        <p><strong>Driver's License Number:</strong> <span id="preview-license-number"></span></p>
+                        <p><strong>Motorcycle Make:</strong> <span id="preview-motorcycle-make"></span></p>
+                        <p><strong>Motorcycle Model:</strong> <span id="preview-motorcycle-model"></span></p>
+                        <p><strong>Sponsor:</strong> <span id="preview-sponsor"></span></p>
+                        <p><strong>Affiliated Club:</strong> <span id="preview-affiliated-club"></span></p>
+                        <p><strong>Club Name:</strong> <span id="preview-club-name"></span></p>
+                        <p><strong>Designated Team/Chapter:</strong> <span id="preview-team-chapter"></span></p>
+                        <p><strong>Date Joined:</strong> <span id="preview-date-joined"></span></p>
+                        <!-- Add more fields here -->
+
+                        <p><strong>Agreement:</strong> <span id="preview-agreement"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success" id="confirm-btn">Confirm and Submit</button>
+                        <button class="btn btn-danger" id="edit-btn" data-bs-dismiss="modal">Edit Application</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Modal for Thank You message -->
+    <div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="thankYouModalLabel">Thank You!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Thank you for submitting your information. We will contact you via email or SMS regarding your application.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get form fields
+            const form = document.getElementById("membership-form");
+            const submitBtn = document.getElementById("submit-btn");
+            const previewModal = new bootstrap.Modal(document.getElementById('previewModal'));
+            const confirmBtn = document.getElementById("confirm-btn");
+            const editBtn = document.getElementById("edit-btn");
+        
+            const dobInput = document.getElementById("dob");
+            const dateJoinedInput = document.getElementById("date_joined");
+        
+            // Set max date (18 years ago from today)
+            const today = new Date();
+            const year = today.getFullYear() - 18;
+            const month = today.getMonth();
+            const day = today.getDate();
+        
+            const maxDate = new Date(year, month, day);
+            const formattedMaxDate = maxDate.toISOString().split('T')[0];
+            dobInput.setAttribute("max", formattedMaxDate);
+        
+            // Set min date for 'Date Joined' (July 5, 2021)
+            const minDateJoined = "2021-07-05";
+            dateJoinedInput.setAttribute("min", minDateJoined);
+        
+            // Preview fields
+            const previewLastName = document.getElementById("preview-last-name");
+            const previewFirstName = document.getElementById("preview-first-name");
+            const previewEmail = document.getElementById("preview-email");
+            const previewMiddleInitial = document.getElementById("preview-middle-initial");
+            const previewAgreement = document.getElementById("preview-agreement");
+            const previewAddress = document.getElementById("preview-address");
+            const previewCivilStatus = document.getElementById("preview-civil-status");
+            const previewDob = document.getElementById("preview-dob");
+            const previewPhone = document.getElementById("preview-phone");
+            const previewBloodType = document.getElementById("preview-blood-type");
+            const previewEmergencyContact = document.getElementById("preview-emergency-contact");
+            const previewOccupation = document.getElementById("preview-occupation");
+            const previewLicenseNumber = document.getElementById("preview-license-number");
+            const previewMotorcycleMake = document.getElementById("preview-motorcycle-make");
+            const previewMotorcycleModel = document.getElementById("preview-motorcycle-model");
+            const previewSponsor = document.getElementById("preview-sponsor");
+            const previewAffiliatedClub = document.getElementById("preview-affiliated-club");
+            const previewClubName = document.getElementById("preview-club-name");
+            const previewTeamChapter = document.getElementById("preview-team-chapter");
+            const previewDateJoined = document.getElementById("preview-date-joined");
+        
+            // Form submission
+            form.addEventListener("submit", function (e) {
+                e.preventDefault(); // Prevent default submission for preview
+        
+                const dobValue = document.getElementById("dob").value;
+                const dob = new Date(dobValue);
+                const today = new Date();
+                let age = today.getFullYear() - dob.getFullYear();
+                const m = today.getMonth() - dob.getMonth();
+        
+                if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+                    age--;
+                }
+        
+                if (age < 18) {
+                    alert("Must be at least 18 years old to register.");
+                    return;
+                }
+        
+                // Fill preview modal with form data
+                previewLastName.textContent = document.getElementById('last_name').value;
+                previewFirstName.textContent = document.getElementById('first_name').value;
+                previewEmail.textContent = document.getElementById('email').value;
+                previewMiddleInitial.textContent = document.getElementById('middle_initial').value || "N/A";
+                previewAddress.textContent = document.getElementById('address').value;
+                previewCivilStatus.textContent = document.getElementById('civil_status').value;
+                previewDob.textContent = document.getElementById('dob').value;
+                previewPhone.textContent = document.getElementById('phone').value;
+                previewBloodType.textContent = document.getElementById('blood_type').value;
+                previewEmergencyContact.textContent = document.getElementById('emergency_contact').value;
+                previewOccupation.textContent = document.getElementById('occupation').value;
+                previewLicenseNumber.textContent = document.getElementById('license_number').value;
+                previewMotorcycleMake.textContent = document.getElementById('motorcycle_make').value;
+                previewMotorcycleModel.textContent = document.getElementById('motorcycle_model').value;
+                previewSponsor.textContent = document.getElementById('sponsor').value;
+                previewAffiliatedClub.textContent = document.getElementById('affiliated_club').value;
+                previewClubName.textContent = document.getElementById('club_name').value || "N/A";
+                previewTeamChapter.textContent = document.getElementById('team_chapter').value;
+                previewDateJoined.textContent = document.getElementById('date_joined').value;
+        
+                // Preview Agreement checkbox
+                previewAgreement.textContent = document.querySelector('input[name="agreement"]:checked') ? "Agreed" : "Not Agreed";
+        
+                // Show the modal
+                previewModal.show();
+            });
+        
+            // When confirm button is clicked, show the "Thank You" modal and submit the form
+            confirmBtn.addEventListener('click', function () {
+                // Show the "Thank You" modal
+                const thankYouModal = new bootstrap.Modal(document.getElementById('thankYouModal'));
+                thankYouModal.show();
+
+                // Delay form submission until the modal is closed
+                thankYouModal._element.addEventListener('hidden.bs.modal', function () {
+                    form.submit();
+                });
+            });
+        
+            // Edit the form if needed
+            editBtn.addEventListener('click', function () {
+                previewModal.hide();
+            });
+        });
+    </script>    
+</body>
+</html>

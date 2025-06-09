@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STMCP | About Us</title>
+    <link rel="icon" type="image/x-icon" href="FAV.webp">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            background: url('HERO.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            flex-grow: 1; /* This makes the body content take up the remaining space */
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 8px 16px; /* Adjusted padding for a more balanced look */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border-bottom: 2px solid rgba(255, 193, 7, 0.6);
+        }
+
+        .navbar-brand img {
+            width: 80px;
+            height: auto;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1.1rem; /* Increase font size for better readability */
+            padding: 8px 12px; /* Adjust padding to ensure proper spacing */
+            text-transform: uppercase; /* This gives a more polished look */
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffc107; /* Highlight hover state for a professional touch */
+            text-decoration: underline; /* Add underline on hover for better user experience */
+        }
+
+
+        #hero {
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        #hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .hero h1 {
+            font-size: 3.6rem;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            color: #f8f9fa;
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+            color: #f8f9fa;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            border: none;
+            font-size: 1.4rem;
+            padding: 16px 32px;
+            border-radius: 12px;
+            transition: 0.3s;
+            color: black;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+        }
+
+        .btn-warning:hover {
+            background-color: #e6a700;
+            transform: translateY(-4px);
+        }
+
+        .btn-dark {
+            background-color: #222;
+            color: white;
+            margin-top: 15px;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-dark:hover {
+            background-color: #111;
+        }
+
+        section {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 80px 20px;
+        }
+
+        .show-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .hide-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+            margin-top: auto; /* This pushes the footer to the bottom */
+        }
+
+        .footer a {
+            color: #ffc107;
+            margin: 0 12px;
+            font-size: 1.1rem;
+        }
+
+        .footer a:hover {
+            color: #e6a700;
+            text-decoration: underline;
+        }
+
+        .info-section h2 {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #ffc107;
+        }
+
+        .info-section p {
+            font-size: 1.3rem;
+        }
+
+        .col-md-6 img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .col-md-6 img:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 767px) {
+            #info-section .col-md-6 {
+                margin-bottom: 20px;
+            }
+        }
+        #info-section .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        #info-section .col-md-6 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Ensures vertical alignment within the columns */
+        }
+        
+        .mission-vision {
+            padding: 40px;
+            background-color: #333; /* Dark background for consistency */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            color: #ddd; /* Light text */
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #f1f1f1; /* Light title color */
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mission-vision .section-subtitle {
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        .mission-vision .history-heading {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #f1f1f1; /* Lighter color for section headings */
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+            position: relative;
+        }
+
+        .mission-vision .history-heading::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 4px;
+            background-color: #fbc02d; /* Yellow accent to match your theme */
+            border-radius: 4px;
+        }
+
+        .mission-vision .mission-list,
+        .mission-vision .vision-list {
+            list-style-type: disc; /* Standard bullet points */
+            padding-left: 40px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #ccc; /* Light color for list text */
+        }
+
+        .mission-vision .mission-list li,
+        .mission-vision .vision-list li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .mission-vision .mission-list li::marker,
+        .mission-vision .vision-list li::marker {
+            color: #fbc02d; /* Yellow bullets */
+        }
+
+        .mission-vision .history-sublist {
+            list-style-type: disc;
+            padding-left: 40px;
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #bbb;
+        }
+
+        .mission-vision .history-sublist li {
+            margin-bottom: 8px;
+        }
+
+        .mission-vision .mission-content,
+        .mission-vision .vision-content {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .fas {
+            color: #fbc02d; /* Yellow for icons */
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        .mission-vision .mission-heading,
+        .mission-vision .vision-heading {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #f1f1f1;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+            position: relative;
+        }
+
+        .mission-vision .mission-heading::before,
+        .mission-vision .vision-heading::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 4px;
+            background-color: #fbc02d;
+            border-radius: 4px;
+        }
+
+        .section-title h2 {
+            color: #ffc107;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Design for Small Screens */
+        @media (max-width: 767px) {
+            .mission-vision {
+                flex-direction: column; /* Stack the two sections vertically on small screens */
+                align-items: center; /* Center align the content */
+            }
+
+            .mission-content, .vision-content {
+                flex-direction: column; /* Stack icon and text vertically */
+                text-align: center;
+                gap: 10px;
+            }
+        }
+        .history {
+            margin-top: 103px; /* Add space below the fixed navbar */
+        }
+        .history {
+            padding: 40px;
+            background-color: #2c2c2c; /* Dark background */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            color: #ddd; /* Light text for contrast */
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #f1f1f1; /* Lighter color for the main title */
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #aaa; /* Lighter color for subtitles */
+            margin-bottom: 30px;
+        }
+
+        .history-heading {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #f1f1f1; /* Lighter color for section headings */
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+            position: relative;
+        }
+
+        .history-heading::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 4px;
+            background-color: #fbc02d; /* Yellow accent to match your theme */
+            border-radius: 4px;
+        }
+
+        .history-list {
+            list-style-type: disc; /* Standard bullet points */
+            padding-left: 40px; /* To align the bullets neatly */
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #ccc; /* Light color for list text */
+        }
+
+        .history-list li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .history-list li::marker {
+            color: #fbc02d; /* Yellow bullets */
+        }
+
+        .history-sublist {
+            list-style-type: disc; /* Standard bullet points for sublist too */
+            padding-left: 40px;
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #bbb; /* Even lighter color for sublist text */
+        }
+
+        .history-sublist li {
+            margin-bottom: 8px;
+        }
+
+        .history-content {
+            margin-bottom: 30px;
+        }
+
+        .fas {
+            color: #fbc02d; /* Yellow for icons */
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        .core-values {
+            padding: 40px;
+            background-color: #333; /* Dark background to match the theme */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            color: #ddd; /* Light text color */
+        }
+
+        .core-values .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #f1f1f1; /* Light title color */
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .core-values .section-title h2 i {
+            margin-right: 10px; /* Adds space between icon and title */
+        }
+
+
+        .core-values .core-value-item {
+            margin-bottom: 30px;
+        }
+
+        .core-values .core-value-item h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #f1f1f1;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+            position: relative;
+        }
+
+        .core-values .core-value-item h3::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 4px;
+            background-color: #fbc02d; /* Yellow accent */
+            border-radius: 4px;
+        }
+
+        .core-values .core-value-item p {
+            font-size: 1.2rem;
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .core-values .core-value-item ul {
+            list-style-type: disc;
+            padding-left: 40px;
+            color: #bbb;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .core-values .core-value-item li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .core-values .core-value-item li::marker {
+            color: #fbc02d; /* Yellow bullet points */
+        }
+
+        .fas {
+            color: #fbc02d; /* Yellow icons */
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        /* Set the text color to black inside the modal */
+        .modal-body, .modal-header, .modal-footer {
+            color: black !important;
+        }
+
+        /* Optional: Make sure links inside the modal have black text */
+        .modal-body a, .modal-header a, .modal-footer a {
+            color: black !important;
+        }
+
+        /* Add custom modal styling (Optional) */
+        .modal-backdrop {
+            z-index: 1050 !important; /* Ensure backdrop is in front */
+        }
+        .modal-content {
+            border-radius: 10px !important; /* Round the corners */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="Official Back Logo.png" alt="Star Touring Motorcycle Club Philippines Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="activities.html">Activities</a></li>
+                    <li class="nav-item"><a class="nav-link" href="newsupdates.html">News and Updates</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- history -->
+    <section class="history">
+        <div class="section-title">
+            <h2><i class="fas fa-history"></i> Our History</h2>
+            <p class="section-subtitle">The journey of Star Touring Motorcycle Club Philippines (STMCP)—from humble beginnings to a strong community committed to charity and riding adventures.</p>
+        </div>
+        
+        <div class="history-content">
+            <h3 class="history-heading">Foundation</h3>
+            <ul class="history-list">
+                <li>The Star Touring Motorcycle Club Philippines (STMCP) was founded by four key individuals, affectionately known within the club as the "4 Pillars"—Erick Lee, Alo Yap, Ericson Gallito, and Mike Miranda.</li>
+                <li>On July 5, 2021, STMCP was officially registered with the Securities and Exchange Commission (SEC), marking its formal recognition as an organization.</li>
+            </ul>
+        </div>
+    
+        <div class="history-content">
+            <h3 class="history-heading">Growth & Expansion</h3>
+            <ul class="history-list">
+                <li>Since its inception, STMCP has steadily grown, attracting motorcycle enthusiasts from the Luzon region and beyond.</li>
+                <li>The club has expanded through word of mouth and active community involvement, creating a network of passionate riders.</li>
+                <li>Today, STMCP is recognized not only as a riding club but as a vibrant and growing community united by shared values and advocacy.</li>
+            </ul>
+        </div>
+    
+        <div class="history-content">
+            <h3 class="history-heading">Advocacy & Events</h3>
+            <ul class="history-list">
+                <li>STMCP is deeply committed to giving back to the community. It organizes charity rides and outreach programs to help those in need.</li>
+                <li>The club fosters brotherhood, adventure, and social responsibility among its members through its advocacy-driven activities.</li>
+                <li>To become an official member, applicants must meet the following requirements:
+                    <ul class="history-sublist">
+                        <li>Attend one Eyeball (EB) gathering</li>
+                        <li>Participate in one charity event</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    
+        <div class="history-content">
+            <h3 class="history-heading">Current Status & Future Outlook</h3>
+            <ul class="history-list">
+                <li>As of today, STMCP boasts an estimated 1,500 members and continues to expand across regions.</li>
+                <li>The club is expected to continue its legacy of uniting motorcycle enthusiasts while making a lasting positive impact on society.</li>
+            </ul>
+        </div>
+    </section>
+    
+    
+    <!-- MISSION -->
+    <section class="mission-vision">
+        <div class="section-title">
+            <h2>Our Mission</h2>
+            <div class="mission-content">
+                <i class="fas fa-bullhorn"></i> <!-- Example Icon -->
+                <p>Our Mission is to build a community among all riders and make a Big Star Family that have Good Camaraderie among its members. We also promote touring all over the Philippines and Experience the Ride that you’ll never forget. STMCP and its Local Chapters also give Charities. We’ll support and participate in different motorcycle events and activities to pursue, promote and protect the interests of motorcyclists; to develop better and more enthusiastic relations between the general public. STMCP promotes motorcycle and road safety for the welfare of the entire STMCP family. </p>
+            </div>
+        </div>
+    
+        <!-- VISION -->
+        <div class="section-title">
+            <h2>Our Vision</h2>
+            <div class="vision-content">
+                <i class="fas fa-globe"></i> <!-- Example Icon -->
+                <p>Our long-term goal: Create Members for Life. We will earn our members’ loyalty. We will listen to them, anticipate their needs, and act to create value in their eyes. We want to be known for our reliability, flexibility, and responsiveness. Growth, longevity and member satisfaction will naturally follow. We will empower our members in an enriching environment of trust, cooperation and mutual respect. </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- core values -->
+    <section class="core-values">
+        <div class="section-title">
+            <h2><i class="fas fa-cogs"></i> Core Values</h2> <!-- Added icon for Core Values -->
+        </div>
+    
+        <div class="core-value-item">
+            <h3>S - Sharing</h3>
+            <p>One of the main advocacies of STAR is sharing what we can to the needy. We also promote selfless riders that always think not just of him/herself but also the welfare of the others. Share the road, share the load. We will travel with a purpose (Leisure, Charities and Social Activities like tree planting, clean up drive etc.). Time will be well spent. We will also make sure that we will have time to share our weekends with our Families and loved ones so we won’t have weekly activities. Our activities will be limited to Bi-Weekly to give the members time to save and prepare.</p>
+            <ul>
+                <li>Charity Events</li>
+                <li>Community Engagement</li>
+                <li>Family Time</li>
+            </ul>
+        </div>
+    
+        <div class="core-value-item">
+            <h3>T - Transparency</h3>
+            <p>The club promotes truthfulness to its members and aspirants. This includes financial, personal, and social activities of the club. STAR and its leadership (P4 or the 4 Pillars) will have its co-equal level of decision-making to ensure that a certain individual including the President, the Chairman of the Board, the Board Members, and other National Executive Leaders will not promote personal gains and interest in the club.</p>
+            <ul>
+                <li>Clear Financials</li>
+                <li>Open Decision Making</li>
+                <li>Honest Leadership</li>
+            </ul>
+        </div>
+    
+        <div class="core-value-item">
+            <h3>A - Accountability</h3>
+            <p>We highly promote accountability on what we do. We brag and share things such as projects and activities to promote the Club and its accomplishments. We’ll also make sure that official members and aspirants will be held accountable for any wrongdoings in the club including all the National, Regional, and Local Leaders from top to bottom. Certain penalties like suspension from participating in our official activities up to expulsion from the club will be merited for any member/s and aspiring member/s for any violation of the club’s rules and regulations.</p>
+            <ul>
+                <li>Project Sharing</li>
+                <li>Responsibility for Actions</li>
+                <li>Consequences for Violations</li>
+            </ul>
+        </div>
+    
+        <div class="core-value-item">
+            <h3>R - Respect</h3>
+            <p>It will be our everyday practice. Everyone deserves to be respected. Respect not just to its members and officers but also to our co-riders, co-road users, respect to nature, and respect to the law of the land and our club by-laws. Respect is the foundation of greatness.</p>
+            <ul>
+                <li>Respect for Each Other</li>
+                <li>Respect for the Environment</li>
+                <li>Respect for the Law</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="mb-1">© 2025 Star Touring Motorcycle Club Philippines. All rights reserved.</p>
+            <div>
+                <a href="privacy_policy.html" class="text-decoration-none me-3" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
+                <a href="terms.html" class="text-decoration-none me-3" data-bs-toggle="modal" data-bs-target="#termsModal">Terms of Service</a>
+                <a href="#" class="text-decoration-none me-3" data-bs-toggle="modal" data-bs-target="#contactModal">Contact Us</a> <!-- Contact Us modal link -->
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Privacy Policy Modal -->
+    <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="privacyModal">Privacy Policy</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe src="privacy_policy.html" style="width: 100%; height: 80vh; border: none;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">Terms of Service</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe src="terms.html" style="width: 100%; height: 80vh; border: none;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Contact Modal -->
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>If you have any questions, feel free to reach out to us!</p>
+                    <p><strong>Email:</strong> <a href="mailto:seanedrick.andres@gmail.com"><i class="fas fa-envelope"></i> seanedrick.andres@gmail.com</a></p> <!-- Gmail icon -->
+                    <p><strong>Follow us on Facebook:</strong> <a href="https://www.facebook.com/HighfiveFam" target="_blank">
+                        <i class="fas fa-envelope"></i> STMCP Star Touring Motorcycle Club Philippines
+                    </a>
+                    </p> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    </script>
+</body>
+</html>
